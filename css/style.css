@@ -8,7 +8,7 @@ a {
 }
 
 .navbar .nav > li > a.active {
-  color: black;
+  color: #428bca;
   font-weight: bold;
 }
 

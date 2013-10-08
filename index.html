@@ -14,7 +14,99 @@
 
 </head>
 <body>
-	<h1>Enterprise Tracker</h1>
+
+
+  <script type="text/x-handlebars">
+    <div class="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="#">Tracker</a>
+        <ul class="nav navbar-nav">
+          <li><a>Programs</a></li>
+          <li><a>About</a></li>
+        </ul>
+      </div>
+    </div>
+    {{outlet}}
+  </script>
+
+
+  <script type="text/x-handlebars" id="programs">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 well">
+          <table class='table'>
+            <thead>
+              <tr><th>Programs</th></tr>
+            </thead>
+            {{#each}}
+              <tr><td>
+                {{#link-to 'program' this}}
+                  {{title}} <small class='text-muted'>( {{owner}} )</small>
+                {{/link-to}}
+              </td></tr>
+            {{/each}}
+          </table>
+          <hr>
+          <a class="btn btn-primary" >Add Program</a>
+        </div>
+        {{outlet}}
+      </div>
+    </div>
+  </script>
+  
+
+  <script type="text/x-handlebars" id="program">
+    <div class="col-md-4 well">
+      <h4 class="text-muted">Program</h4><h3>{{title}}</h3>
+      <span><small class='text-muted'>Owner:</small> {{owner}} </span>
+      <br>
+      <br>
+      <p>
+        <small class='text-muted'>{{description}}</small>
+      </p>
+      <hr>
+      <div>
+        <div>
+          <div>
+            <h5>Project List</h5>
+          </div>
+        </div>
+        <div>
+          {{#each projects}}
+          <div class="row">
+            <div class="col-md-12 widget-container-span">
+              <div class="widget-box collapsed">
+                <div class="widget-header">
+                  <a>
+                    {{title}}
+                  </a>
+                  <div class="widget-toolbar">
+                    <a data-action="collapse" href="#"><i class="icon-chevron-down"></i></a>
+                    <a data-action="close" href="#"><i class="icon-remove"></i></a>
+                  </div>
+                </div>
+                <div class="widget-body">
+                  <div class="widget-main">
+                    <p>Project properties</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      <a>+ Add Task</a>
+      <br><br>
+      <div>
+        <a class="btn btn-primary">
+          Edit
+        </a>
+        <a class="btn btn-danger">Remove</a>
+      </div>
+    </div>
+    {{outlet}}
+  </script>
 
 	<!-- ember js dependencies -->
 
@@ -37,6 +129,11 @@
   <script src="js/router.js"></script>
 
   <!-- ember js models -->
+
+  <script src="js/models/program.js"></script>
+  <script src="js/models/project.js"></script>
+  <script src="js/models/job.js"></script>
+  <script src="js/models/task.js"></script>
 
   <!-- ember js controllers -->
 
