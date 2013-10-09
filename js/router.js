@@ -13,7 +13,6 @@ Tracker.ProgramsRoute = Ember.Route.extend({
 
 Tracker.ProgramRoute = Ember.Route.extend({
 	model: function (params) {
-		console.debug(this.store.find('program', params.program_id))
 		return this.store.find('program', params.program_id);
 	}
 });
